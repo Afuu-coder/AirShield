@@ -1,0 +1,209 @@
+.jump ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+.jump a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target);
+  padding: 0 1rem;
+  background: var(--surface-2);
+  color: var(--accent);
+  border: 2px solid var(--field-border);
+  border-radius: 9999px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.jump a:hover {
+  border-color: var(--accent);
+  background: var(--surface-1);
+  color: var(--accent-strong);
+}
+
+.air__place {
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+}
+.air__advisory {
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+.band {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border: 2px solid var(--band-colour);
+  border-left: 0.75rem solid var(--band-colour);
+  border-radius: 14px;
+  background: var(--band-bg);
+  color: var(--ink);
+  font-size: 1.3rem;
+  box-shadow: 0 4px 12px var(--surface-2);
+}
+.band__symbol {
+  color: var(--band-colour);
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.readings,
+.totals {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 0.85rem;
+}
+.readings > div,
+.totals > div {
+  padding: 1rem;
+  background: var(--surface-2);
+  border: 2px solid var(--field-border);
+  border-radius: 12px;
+}
+.readings > div:hover,
+.totals > div:hover {
+  border-color: var(--accent);
+}
+dt {
+  color: var(--ink-soft);
+  font-size: 1.0625rem;
+  font-weight: 500;
+}
+dd {
+  margin: 0.25rem 0 0;
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: var(--accent);
+  overflow-wrap: anywhere;
+}
+
+#air {
+  border-top: 4px solid var(--accent);
+}
+section[aria-labelledby='assistant-h'] {
+  border-top: 4px solid var(--band-very-unhealthy);
+}
+section[aria-labelledby='assistant-h'] h3,
+.encouragement {
+  color: var(--band-very-unhealthy);
+}
+.encouragement {
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+section[aria-labelledby='impact-h'] {
+  border-top: 4px solid var(--band-good);
+}
+section[aria-labelledby='impact-h'] dd {
+  color: var(--band-good);
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+caption {
+  text-align: left;
+  color: var(--ink-soft);
+  padding-bottom: 0.5rem;
+}
+th,
+td {
+  text-align: left;
+  padding: 0.5rem 0.65rem;
+  border-bottom: 1px solid var(--field-border);
+}
+tbody tr:hover {
+  background: var(--surface-2);
+}
+
+.notice {
+  margin: 1.5rem 0;
+  padding: 1.25rem 1.5rem;
+  background: var(--notice-bg);
+  border: 2px solid var(--field-border);
+  border-left: 0.5rem solid var(--accent);
+  border-radius: var(--radius);
+}
+.notice h3 {
+  margin-top: 0;
+}
+
+.recs {
+  list-style: none;
+  padding: 0;
+}
+.rec {
+  margin-bottom: 1.25rem;
+  padding: 1.5rem;
+  background: var(--surface-1);
+  border: 2px solid var(--field-border);
+  border-left: 0.55rem solid var(--accent);
+  border-radius: 16px;
+  box-shadow: 0 4px 14px var(--surface-2);
+}
+.rec:hover {
+  border-color: var(--accent);
+}
+.rec__title {
+  color: var(--accent);
+  font-size: 1.25rem;
+  margin-bottom: 0.4rem;
+}
+.rec__impact {
+  padding: 0.75rem 1rem;
+  background: var(--surface-2);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+#list-indoor .rec,
+#list-indoor .rec__impact {
+  border-left-color: var(--band-good);
+}
+#list-indoor .rec__title {
+  color: var(--band-good);
+}
+#list-alternative .rec,
+#list-alternative .rec__impact {
+  border-left-color: var(--band-moderate);
+}
+#list-alternative .rec__title {
+  color: var(--band-moderate);
+}
+
+.rec__calc {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 1.0625rem;
+  overflow-wrap: anywhere;
+}
+.rec__factors,
+.rec__empty {
+  color: var(--ink-soft);
+}
+.rec__factors {
+  padding-left: 1.2rem;
+  font-size: 1.0625rem;
+}
+
+@media print {
+  .site-header button,
+  form,
+  .skip-link,
+  .jump {
+    display: none;
+  }
+}

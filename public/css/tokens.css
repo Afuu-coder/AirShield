@@ -1,0 +1,91 @@
+/* Design tokens. Light is the default theme; dark is chosen with the toggle.
+   Every colour pair used on the page is checked for WCAG contrast in
+   test/contrast.dom.test.ts, in both themes. */
+:root {
+  --surface-0: #f3f8fc;
+  --surface-1: #ffffff;
+  --surface-2: #e5f0f8;
+  --ink: #0b1c2d;
+  --ink-soft: #3f566e;
+  --accent: #00629b;
+  --accent-strong: #004770;
+  --on-accent: #ffffff;
+  --field-border: #5f788f;
+  --field-border-hover: #0b1c2d;
+  --focus: #0056b3;
+  --error: #b3261e;
+  --error-bg: #fdecea;
+  --notice-bg: #fff4d6;
+  --band-good: #127c36;
+  --band-good-bg: #e1f5e8;
+  --band-moderate: #7a5600;
+  --band-moderate-bg: #fff5cc;
+  --band-sensitive: #a34a00;
+  --band-sensitive-bg: #ffe9d1;
+  --band-unhealthy: #b3261e;
+  --band-unhealthy-bg: #fde3e1;
+  --band-very-unhealthy: #7b2d9b;
+  --band-very-unhealthy-bg: #f1e2f7;
+  --band-hazardous: #7a0e2a;
+  --band-hazardous-bg: #f6dde3;
+
+  --radius: 12px;
+  --space: 1rem;
+  --target: 48px;
+  --font:
+    system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Noto Sans Devanagari', sans-serif;
+}
+
+:root[data-theme='dark'] {
+  --surface-0: #0a131c;
+  --surface-1: #111e2b;
+  --surface-2: #192b3d;
+  --ink: #eaf3fb;
+  --ink-soft: #a6c4de;
+  --accent: #48b4f4;
+  --accent-strong: #78cdff;
+  --on-accent: #041828;
+  --field-border: #759ab8;
+  --field-border-hover: #eaf3fb;
+  --focus: #7cc3ff;
+  --error: #ffb4ab;
+  --error-bg: #3a1512;
+  --notice-bg: #33290a;
+  --band-good: #6fdc8c;
+  --band-good-bg: #12301c;
+  --band-moderate: #f2cc60;
+  --band-moderate-bg: #332a05;
+  --band-sensitive: #ffb070;
+  --band-sensitive-bg: #3a2208;
+  --band-unhealthy: #ffa39a;
+  --band-unhealthy-bg: #3b1414;
+  --band-very-unhealthy: #dcb0f2;
+  --band-very-unhealthy-bg: #2c1838;
+  --band-hazardous: #ffa3b8;
+  --band-hazardous-bg: #3a0f1a;
+}
+
+.band--good {
+  --band-colour: var(--band-good);
+  --band-bg: var(--band-good-bg);
+}
+.band--moderate {
+  --band-colour: var(--band-moderate);
+  --band-bg: var(--band-moderate-bg);
+}
+.band--sensitive {
+  --band-colour: var(--band-sensitive);
+  --band-bg: var(--band-sensitive-bg);
+}
+.band--unhealthy {
+  --band-colour: var(--band-unhealthy);
+  --band-bg: var(--band-unhealthy-bg);
+}
+.band--very-unhealthy {
+  --band-colour: var(--band-very-unhealthy);
+  --band-bg: var(--band-very-unhealthy-bg);
+}
+.band--hazardous {
+  --band-colour: var(--band-hazardous);
+  --band-bg: var(--band-hazardous-bg);
+}
