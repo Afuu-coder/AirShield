@@ -1,26 +1,23 @@
 /* The profile form: fields, choices, and how errors are shown. */
 fieldset {
-  margin: 1.75rem 0;
-  padding: 1.5rem 1.25rem 1rem;
+  margin: 1.65rem 0;
+  padding: 1.4rem 1.25rem 1rem;
   background: var(--surface-1);
   border: 2px solid var(--field-border);
+  border-top: 4px solid var(--accent);
   border-radius: 16px;
   min-width: 0;
-  box-shadow: 0 4px 16px var(--surface-2);
+  box-shadow: var(--shadow);
 }
 fieldset:hover {
   border-color: var(--field-border-hover);
 }
-fieldset:nth-of-type(1),
-fieldset:nth-of-type(2) {
-  border-top: 4px solid var(--accent);
-}
 #family-fields,
 #community-fields {
-  border-top: 4px solid var(--band-good);
+  border-top-color: var(--band-good);
 }
 fieldset:last-of-type {
-  border-top: 4px solid var(--band-moderate);
+  border-top-color: var(--band-moderate);
 }
 
 legend {
@@ -34,7 +31,7 @@ legend {
 }
 
 .field {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.2rem;
   min-width: 0;
 }
 .field-row {
@@ -68,14 +65,12 @@ select,
 textarea {
   min-height: var(--target);
 }
-input[type='text']:hover,
-input[type='number']:hover,
+input:hover,
 select:hover,
 textarea:hover {
   border-color: var(--field-border-hover);
 }
-input[type='text']:focus,
-input[type='number']:focus,
+input:focus,
 select:focus,
 textarea:focus {
   border-color: var(--accent);
@@ -102,13 +97,12 @@ textarea:focus {
   font-weight: 500;
   cursor: pointer;
 }
-.choice:hover {
+.choice:hover,
+.choice:has(input:checked) {
   border-color: var(--accent);
   background: var(--surface-1);
 }
 .choice:has(input:checked) {
-  border-color: var(--accent);
-  background: var(--surface-1);
   font-weight: 700;
 }
 .choice input {
@@ -185,4 +179,32 @@ details > summary {
 }
 details > summary:hover {
   color: var(--accent-strong);
+}
+
+.preset-bar,
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target);
+  padding: 0.45rem 0.95rem;
+  background: var(--surface-2);
+  color: var(--ink);
+  border: 2px solid var(--field-border);
+  border-radius: 9999px;
+  font: inherit;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.chip:hover,
+.chip[aria-pressed='true'] {
+  border-color: var(--accent);
+  background: var(--surface-1);
+  color: var(--accent);
 }

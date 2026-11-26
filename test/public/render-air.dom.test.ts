@@ -27,6 +27,16 @@ it('states the AQI band in words and a symbol, with the readings and the outlook
   expect(byId('air-worst').textContent).toBe('10 pm (220 µg/m³)');
   expect(byId('air-advisory').textContent).toContain('Children, elders');
   expect(byId('air-source').textContent).toContain('Live reading');
+  expect(byId('air-scale').querySelector('li[aria-current="true"]')?.textContent.trim()).toBe(
+    'Unhealthy',
+  );
+  const chart = document.getElementById('air-chart');
+  const bars = [...(chart?.querySelectorAll('rect') ?? [])];
+  expect(bars).toHaveLength(24);
+  expect(bars.some((bar) => bar.getAttribute('class')?.includes('chart-bar--best'))).toBe(true);
+  expect(bars.some((bar) => bar.getAttribute('class')?.includes('chart-bar--worst'))).toBe(true);
+  chart?.remove();
+  await renderWith(okReply(planReply()), okReply(await modelNarrative()));
 });
 
 it('lists all 24 forecast hours in a table with row headers', async () => {

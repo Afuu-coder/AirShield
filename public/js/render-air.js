@@ -1,5 +1,6 @@
 // @ts-check
-/** Renders the air card: the AQI band in words and symbol, readings, and the hourly table. */
+/** Renders the air card: the AQI band in words and symbol, readings, visuals, and hourly table. */
+import { renderAirVisuals } from './air-visuals.js';
 import { $, textEl } from './dom.js';
 import { formatNumber } from './shared/limits.js';
 
@@ -33,6 +34,7 @@ export function renderAir({ place, air, advisory }) {
     air.source === 'live'
       ? 'Live reading from the Open-Meteo Air Quality API.'
       : 'Live data is unavailable right now, so these are typical winter values for this area, not a measurement.';
+  renderAirVisuals(air);
   $('air-hours', HTMLElement).replaceChildren(
     ...air.hours.map((hour) => {
       const row = document.createElement('tr');

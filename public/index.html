@@ -21,7 +21,14 @@
 
     <header class="site-header">
       <div class="wrap site-header__row">
-        <p class="brand"><span aria-hidden="true">◍</span> AirShield</p>
+        <p class="brand">
+          <svg class="brand__mark" width="28" height="28" viewBox="0 0 64 64" aria-hidden="true">
+            <circle class="brand__circle" cx="32" cy="32" r="30" />
+            <path class="brand__leaf" d="M16 38c7-15 21-17 32-6-11-3-18 1-22 10-4-1-7-2-10-4z" />
+          </svg>
+          <span>AirShield</span>
+          <span class="tag brand__badge">Live AQI + AI</span>
+        </p>
         <button type="button" id="theme-toggle" class="btn btn--quiet" aria-pressed="false">
           Dark theme
         </button>
@@ -29,15 +36,26 @@
     </header>
 
     <main id="main" class="wrap" tabindex="-1">
-      <h1>Breathe cleaner air through the smog season</h1>
-      <p class="lede">
-        AirShield is a GenAI-powered assistant for severe winter smog and urban air pollution. Tell
-        it where you live and how you live, and it builds a plan for your family or your community,
-        with the direct impact of every choice worked out.
-      </p>
+      <div class="hero">
+        <p class="hero__eyebrow">Urban Air Quality Assistant · Family &amp; Community Planner</p>
+        <h1>Breathe cleaner air through the smog season</h1>
+        <p class="lede">
+          AirShield is a GenAI-powered assistant for severe winter smog and urban air pollution.
+          Tell it where you live and how you live, and it builds a plan for your family or your
+          community, with the direct impact of every choice worked out.
+        </p>
+      </div>
 
       <form id="profile-form" novalidate aria-labelledby="form-h">
         <h2 id="form-h">Build your clean-air plan</h2>
+        <div class="preset-bar" role="group" aria-label="Sample profiles">
+          <button type="button" class="chip" data-preset="delhi-family">
+            Sample: Delhi family
+          </button>
+          <button type="button" class="chip" data-preset="gurugram-rwa">
+            Sample: Gurugram RWA
+          </button>
+        </div>
 
         <div id="error-summary" class="error-summary" role="alert" tabindex="-1" hidden>
           <h3 id="error-summary-h">There is a problem</h3>
@@ -74,6 +92,13 @@
               aria-describedby="place-hint place-error"
             />
             <p class="field-error" id="place-error"></p>
+            <div class="chip-row" role="group" aria-label="Quick city picks">
+              <button type="button" class="chip" data-city="Delhi">Delhi</button>
+              <button type="button" class="chip" data-city="Mumbai">Mumbai</button>
+              <button type="button" class="chip" data-city="Lucknow">Lucknow</button>
+              <button type="button" class="chip" data-city="Gurugram">Gurugram</button>
+              <button type="button" class="chip" data-city="Patna">Patna</button>
+            </div>
           </div>
         </fieldset>
 
@@ -247,6 +272,11 @@
             <li><a href="#alternative-h">Alternatives</a></li>
           </ul>
         </nav>
+        <div class="results-actions">
+          <button type="button" id="copy-plan-btn" class="btn btn--quiet">
+            Copy clean-air plan
+          </button>
+        </div>
 
         <section id="guard-alert" class="notice" aria-labelledby="guard-h" hidden>
           <h3 id="guard-h">We removed some text before asking the AI</h3>
@@ -266,6 +296,16 @@
               >US AQI <strong id="air-aqi"></strong>: <strong id="air-label"></strong
             ></span>
           </p>
+          <ol id="air-scale" class="aqi-scale" aria-label="US AQI severity scale">
+            <li class="aqi-scale__seg band--good" data-band="good">Good</li>
+            <li class="aqi-scale__seg band--moderate" data-band="moderate">Moderate</li>
+            <li class="aqi-scale__seg band--sensitive" data-band="sensitive">Sensitive</li>
+            <li class="aqi-scale__seg band--unhealthy" data-band="unhealthy">Unhealthy</li>
+            <li class="aqi-scale__seg band--very-unhealthy" data-band="very-unhealthy">
+              Very Unhealthy
+            </li>
+            <li class="aqi-scale__seg band--hazardous" data-band="hazardous">Hazardous</li>
+          </ol>
           <p id="air-advisory" class="air__advisory"></p>
           <dl class="readings">
             <div>
@@ -290,6 +330,18 @@
             </div>
           </dl>
           <p id="air-source" class="hint"></p>
+          <figure class="forecast-chart">
+            <figcaption id="air-chart-cap" class="hint">
+              24-hour PM2.5 outlook (green: cleanest hour, red: peak smog)
+            </figcaption>
+            <svg
+              id="air-chart"
+              class="chart-svg"
+              viewBox="0 0 240 68"
+              role="img"
+              aria-labelledby="air-chart-cap"
+            ></svg>
+          </figure>
           <details>
             <summary>PM2.5 hour by hour</summary>
             <div class="table-scroll" tabindex="0" role="region" aria-labelledby="hours-caption">

@@ -1,10 +1,12 @@
 // @ts-check
 /** Entry point: submit the profile, render the plan, then let the assistant fill in. */
 import { ApiError, postJson } from './api.js';
+import { initCopyPlan, setPlanSummary } from './copy-plan.js';
 import { $, announce } from './dom.js';
 import { clearIssues, formIssue, showIssues } from './errors.js';
 import { initForm, readForm } from './form.js';
 import { isNarrative, isPlanView } from './guards.js';
+import { initPresets } from './presets.js';
 import { renderAir } from './render-air.js';
 import {
   renderAssistant,
@@ -50,6 +52,7 @@ async function loadPlan(profile) {
   renderAir(view);
   renderPlan(view);
   renderFindings(view.findings);
+  setPlanSummary(view);
   const results = $('results', HTMLElement);
   results.hidden = false;
   results.focus();
@@ -84,6 +87,8 @@ async function onSubmit() {
 
 initTheme();
 initForm();
+initPresets();
+initCopyPlan();
 $('profile-form', HTMLFormElement).addEventListener('submit', (event) => {
   event.preventDefault();
   void onSubmit();
